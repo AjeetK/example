@@ -1,0 +1,19 @@
+<!-- extend bootstrap template templates/polls/base.html -->
+{% extends 'polls/base.html' %}
+
+<!-- This block will get rendered inside base.html -->
+{% block info %}
+	<div class="well"><p><i><b>Whats-Op is an app to share your opinion by voting a question of your interest.</b></i></p></div>
+{% endblock %}
+{% block content %}
+<p>Now vote for the question to show your opinion to others.</p>
+{% if latest_question_list %}
+	<ul>
+	{% for question in latest_question_list %}
+		<h4><li><a href="{% url 'polls:detail' question.id %}" >{{question.question_text}}</a></li></h4>
+	{% endfor %}
+
+{% else %}
+	<p>No polls are available</p>
+{% endif %}
+{% endblock %}
